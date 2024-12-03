@@ -1,15 +1,23 @@
 import React from "react";
 import logo from "../assets/logo.png";
 import { IoSearchOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../utils/menuSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const toggleMenuHandler = () => {
+    dispatch(toggleMenu());
+  };
   return (
     <div className="grid grid-flow-col p-8 shadow-lg">
       {/* top left */}
       <div className="flex col-span-1">
         {/* hamburger menu */}
         <img
-          className="h-8"
+          onClick={() => toggleMenuHandler()}
+          className="h-8 cursor-pointer"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwD9vnKk5oPrEHIthwjMIshbnqJgQDgdAvfA&s"
           alt=""
         />
