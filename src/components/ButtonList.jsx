@@ -1,7 +1,15 @@
 import React from "react";
 import Button from "./Button";
 
-const list = ["All", "Live", "Gaming", "Music", "Gaming"];
+const list = [
+  "All",
+  "Live",
+  "Gaming",
+  "Music",
+  "Gaming",
+  "Software development",
+  "Data Structures",
+];
 
 const ButtonList = () => {
   return (
