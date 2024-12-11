@@ -7,21 +7,20 @@ import { toggleMenu } from "../utils/menuSlice";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // api call
-    getSearchSuggestions();
-    // in normal, it make an api call after every key press
+    const timer = setTimeout(() => getSearchSuggestions(), 200);
 
-    // but we can apply debounce and can make such as: if the difference between 2 api calls is <200ms decline the API call
+    return () => {
+      clearTimeout(timer);
+    };
   }, [searchQuery]);
 
   // api call
   const getSearchSuggestions = async () => {
     const data = await fetch(
-      import.meta.env.VITE_SEARCH_SUGGESTION_API + searchQuery
+      import.meta.env.VITE_YOUTUBE_SEARCH_SUGGESTION_API + searchQuery
     );
 
     const json = await data.json();
